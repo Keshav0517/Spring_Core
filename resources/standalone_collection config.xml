@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans
+        xmlns="http://www.springframework.org/schema/beans"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:context="http://www.springframework.org/schema/context"
+        xmlns:p="http://www.springframework.org/schema/p"
+        xmlns:util="http://www.springframework.org/schema/util"
+        xsi:schemaLocation="http://www.springframework.org/schema/beans
+               http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+               http://www.springframework.org/schema/context
+               http://www.springframework.org/schema/context/spring-context.xsd
+               http://www.springframework.org/schema/util
+               http://www.springframework.org/schema/util/spring-util.xsd">
+
+<!--    Standalone list collection-->
+<!--    We need to add util schema-->
+    <util:list list-class="java.util.LinkedList" id="bestFriends">
+        <value>Jayesh</value>
+        <value>YashRaj</value>
+        <value>Krishnapal</value>
+    </util:list>
+
+<!--    Standalone Map collection-->
+    <util:map map-class="java.util.HashMap" id="fees">
+        <entry key="Spring frameWork" value="5000"/>
+        <entry key="Django framework" value="4000"/>
+        <entry key="Hibernate framework" value="2000"/>
+    </util:map>
+
+<!--    Standalone Properties collection-->
+    <util:properties id="dbconfig">
+        <prop key="driver"> com.mysql.jdbc.Driver</prop>
+        <prop key="username">Keshav</prop>
+        <prop key="password">12345</prop>
+    </util:properties>
+
+    <bean name="person1" class="org.example.standalone_collection.Person">
+        <property name="friends">
+            <ref bean="bestFriends"/>
+        </property>
+
+        <property name="feesStructure" ref="fees"/>
+        <property name="prop" ref="dbconfig"/>
+    </bean>
+
+</beans>
